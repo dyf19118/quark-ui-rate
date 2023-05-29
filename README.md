@@ -1,57 +1,46 @@
-# Quark 组件
+# Introduction
+Give rate to something.
 
-基于本工程，您可以构建属于自己的跨技术栈/无框架 组件。并允许被发布到 npm 平台供他人使用。
+It's a **cross-framework** component enpowered by [quarkc](https://quark.hellobike.com/#/en-US/docs/introduce).
 
-## 如何使用
+# Installation
 
 ```
-npm install
-npm run dev
+npm i quark-ui-rate
 ```
 
-入口文件为 `src/main.tsx`，使用 `vite` 进行开发时的构建，生产使用 `rollup` 进行打包。
+Use whatever package manager you like.
 
+# Usage
+Since it's cross-framework, you can use it in popular javascript frameworks like `Vue`, `React`, `Angular` and `jQuery`.
 
-## 发布到 npm
-
-如果您想要将当前组件发布到 npm，请在 `package.json` 中配置：
-
+First import it in your JS entry:
 ```js
-"main": "./lib/index.js",
-"module": "./lib/index.js",
-"files": [ // 需要上传到 npm 的文件，也可用 .npmignore 替代
-  "/lib"
-],
+import 'quark-ui-rate'
 ```
-
-## 打包产物
-
+Then use it as a normal web component:
+```html
+<quark-ui-rate
+  size="1.5rem"
+  value="3.7"
+  space="0.5rem"
+  color="#ddd"
+  activeColor="linear-gradient(to right, #a8f, #8af)"
+/>
 ```
-npm run build
-```
-打包后的产出为： `lib/index.js`。
+which shows a 3.7 stars rating out of 5 (top rating stars' count can be customized by the component property [count](#attributes), which is default to `5`).
 
-## 使用产物
+# API
 
-您可以在本地登录npm后，在根目录执行 `npm publish`，发布到 `npm` 平台，供他人使用。
+## Attributes
 
+| Attribute   | Description                                      | Type             | Default |
+| ----------- | ------------------------------------------------ | ---------------- | ------- |
+| value       | current rating                                   | number           | 0       |
+| count       | icon count                                       | number           | 5       |
+| size        | icon size, if unit part omitted, default to 'px' | number \| string | 20px    |
+| space       | space between icons                              | number \| string | 4px     |
+| icon        | icon's url                                       | string           |         |
+| color       | default color of icon                            | string           | #F0F3F5 |
+| activeColor | active color of icon                             | string           |         |
 
-<img src="https://raw.githubusercontent.com/hellof2e/quark-cli/main/demo2.jpg" />
-
-### 1、安装
-
-```javascript
-npm install quark-my-component
-```
-
-### 2、使用
-
-无论是`Vue`，`React`，`Angular`还是`Jq`项目，该组件都可以被使用。
-
-```js
-import 'quark-my-component/lib/index'
-
-<my-component count="0" />
-```
-
-<img src="https://raw.githubusercontent.com/hellof2e/quark-cli/main/demo.jpg" />

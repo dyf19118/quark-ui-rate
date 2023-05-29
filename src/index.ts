@@ -1,5 +1,5 @@
-import MyComponent from './main';
+import QuarkUiRate from './main';
 
 export {
-  MyComponent
+  QuarkUiRate
 }

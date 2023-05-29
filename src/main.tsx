@@ -5,8 +5,8 @@ import defaultIconURL from "./images/star-mask.png";
 
 const cssValueRE = /^((?:\d+)?(?:\.\d*)?)([a-zA-Z]+)?$/;
 
-@customElement({ tag: "my-component", style })
-class MyComponent extends QuarkElement {
+@customElement({ tag: "quark-ui-rate", style })
+class QuarkUiRate extends QuarkElement {
   /** 当前分值 */
   @property({ type: Number })
   value = 0;
@@ -45,7 +45,10 @@ class MyComponent extends QuarkElement {
     return [parseFloat(value), unit || defaultUnit];
   }
 
-  parseValue = memoize(this._parseValue);
+  parseValue = memoize(
+    this._parseValue
+    // (...args) => JSON.stringify(args),
+  );
 
   formatParsedValue([value, unit]: [number, string]) {
     return `${value}${unit}`;
@@ -80,6 +83,10 @@ class MyComponent extends QuarkElement {
   /** 进度导轨的真实宽度 */
   get progressWidth() {
     return this.progressBgWidth * this.progress;
+  }
+
+  componentWillUnmount() {
+    this.parseValue.cache.clear();
   }
 
   render() {
@@ -127,4 +134,4 @@ class MyComponent extends QuarkElement {
   }
 }
 
-export default MyComponent;
+export default QuarkUiRate;

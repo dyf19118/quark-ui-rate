@@ -34,7 +34,7 @@
     "vite-plugin-full-reload": "^1.0.5"
   },
   "peerDependencies": {
-    "lodash-es": "^4.17.21",
+    "lodash-es": "4.x",
     "quarkc": "^1.0.4"
   },
   "engines": {
