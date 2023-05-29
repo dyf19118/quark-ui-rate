@@ -24,13 +24,31 @@
   <body>
     <!-- This is your component (custom element). -->
     <quark-ui-rate
+      id="rate"
       count="10"
       size="1.5rem"
       value="3.7"
       space="0.5rem"
-      color="#ddd"
       activeColor="linear-gradient(to right, #a8f, #8af)"
+      allowHalf
+      readonly="false"
+      disabled="false"
     ></quark-ui-rate>
     <p>Edit <code>src/app.tsx</code> and save to test HMR</p>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const rate = document.getElementById("rate");
+        rate.addEventListener("input", (value) => {
+          if (value.detail < 3) {
+            console.log("at least 3 stars required");
+            return;
+          }
+          rate.setAttribute("value", value.detail);
+        });
+        rate.addEventListener("change", (value) => {
+          console.log("value changed", value.detail);
+        });
+      });
+    </script>
   </body>
 </html>

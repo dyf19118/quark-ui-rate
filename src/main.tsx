@@ -28,6 +28,15 @@ class QuarkUiRate extends QuarkElement {
   /** 图标地址 */
   @property({ type: String })
   icon = defaultIconURL;
+  /** is half rate allowed */
+  @property({ type: Boolean })
+  allowHalf = false;
+  /** is readonly */
+  @property({ type: Boolean })
+  readonly = false;
+  /** is disabled */
+  @property({ type: Boolean })
+  disabled = false;
 
   get roundedValue() {
     return Math.min(this.count, Math.max(0, this.value));
@@ -85,16 +94,54 @@ class QuarkUiRate extends QuarkElement {
     return this.progressBgWidth * this.progress;
   }
 
+  _getClassNames(classNameMap: Record<string, boolean>) {
+    return Object.entries(classNameMap)
+      .filter(([_, value]) => value)
+      .map(([className]) => className)
+      .join(" ");
+  }
+
+  getClassNames = memoize(this._getClassNames);
+
+  componentDidUpdate(propName: string, oldValue: string, newValue: string) {
+    // 已更新
+    if (propName === "value") {
+      this.$emit("change", {
+        detail: newValue,
+      });
+    }
+  }
+
   componentWillUnmount() {
     this.parseValue.cache.clear();
   }
 
+  async handleClick(e: PointerEvent, index: number) {
+    if (!(e.target instanceof HTMLElement) || this.readonly || this.disabled) {
+      return;
+    }
+
+    const {
+      target: { offsetWidth },
+      offsetX,
+    } = e;
+    const targetValue = this.allowHalf
+      ? Math.ceil((offsetX / offsetWidth) * 2) * 0.5
+      : 1;
+    this.$emit("input", { detail: index + targetValue });
+  }
+
   render() {
     return (
-      <div class="star-list">
+      <div
+        class={`star-list ${this.getClassNames({
+          "star-list--readonly": this.readonly,
+          "star-list--disabled": this.disabled,
+        })}`}
+      >
         {Array.from(new Array(this.count), (_, index) => (
           <div
-            key={index + 1}
+            key={index}
             class="star"
             style={{
               width: this.formattedSize,
@@ -103,10 +150,11 @@ class QuarkUiRate extends QuarkElement {
                 index === 0
                   ? "0px"
                   : this.formatParsedValue(this.parseValue(this.space)),
-              background: this.color,
+              background: this.disabled ? "#F0F3F5" : this.color,
               "mask-image": `url(${this.icon})`,
               "-webkit-mask-image": `url(${this.icon})`,
             }}
+            onClick={(e: PointerEvent) => this.handleClick(e, index)}
           >
             <div
               class="star__progress"
@@ -120,7 +168,7 @@ class QuarkUiRate extends QuarkElement {
                   this.parsedSizeUnit,
                 ]),
                 background: `${
-                  this.activeColor
+                  this.disabled ? "#c8c9cc" : this.activeColor
                 } left top / ${this.formatParsedValue([
                   this.progressBgWidth,
                   this.parsedSizeUnit,

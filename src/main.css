@@ -13,4 +13,13 @@
 
 .star-list {
   display: flex;
+  cursor: pointer;
+}
+
+.star-list--readonly {
+  cursor: default;
+}
+
+.star-list--disabled {
+  cursor: not-allowed;
 }
