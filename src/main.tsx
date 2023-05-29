@@ -3,7 +3,7 @@ import { memoize } from "lodash-es";
 import style from "./main.css?inline";
 import defaultIconURL from "./images/star-mask.png";
 
-const cssValueRE = /^((?:\d+)?(?:\.\d*)?)([a-zA-Z]+)?$/;
+const cssValueRE = /^((?:\d+)?(?:\.\d*)?)([a-zA-Z%]+)?$/;
 
 @customElement({ tag: "quark-ui-rate", style })
 class QuarkUiRate extends QuarkElement {
