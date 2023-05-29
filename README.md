@@ -26,7 +26,7 @@ Then use it as a normal web component:
   space="0.5rem"
   color="#ddd"
   activeColor="linear-gradient(to right, #a8f, #8af)"
-/>
+></quark-ui-rate>
 ```
 which shows a 3.7 stars rating out of 5 (top rating stars' count can be customized by the component property [count](#attributes), which is default to `5`).
 
