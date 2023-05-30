@@ -22,25 +22,30 @@ Then use it as a normal web component:
 ```html
 <quark-ui-rate
   size="1.5rem"
-  value="3.7"
+  value="4.7"
   space="0.5rem"
   color="#ddd"
   activeColor="linear-gradient(to right, #a8f, #8af)"
 ></quark-ui-rate>
 ```
-which shows a 3.7 stars rating out of 5 (top rating stars' count can be customized by the component property [count](#attributes), which is default to `5`).
+which shows a 4.7 stars rating out of 5 (top rating stars' count can be customized by the component property [count](#attributes), which is default to `5`).
+
+![demo](https://m.hellobike.com/resource/helloyun/18121/VznpvxD0Zr.png?x-oss-process=image/quality,q_80)
 
 # API
 
 ## Attributes
 
-| Attribute   | Description                                      | Type             | Default |
-| ----------- | ------------------------------------------------ | ---------------- | ------- |
-| value       | current rating                                   | number           | 0       |
-| count       | icon count                                       | number           | 5       |
-| size        | icon size, if unit part omitted, default to 'px' | number \| string | 20px    |
-| space       | space between icons                              | number \| string | 4px     |
-| icon        | icon's url                                       | string           |         |
-| color       | default color of icon                            | string           | #F0F3F5 |
-| activeColor | active color of icon                             | string           |         |
+| Attribute   | Description                     | Type             | Default |
+| ----------- | ------------------------------- | ---------------- | ------- |
+| value       | current rating                  | number           | 0       |
+| count       | icon count                      | number           | 5       |
+| size        | icon size, unit default to 'px' | number \| string | 20px    |
+| space       | space between icons             | number \| string | 4px     |
+| icon        | icon's url                      | string           |         |
+| color       | default color of icon           | string           | #F0F3F5 |
+| activeColor | active color of icon            | string           |         |
+| allowHalf   | is half select allowed          | boolean          | false   |
+| readonly    | is readonly                     | boolean          | false   |
+| disabled    | is disabled                     | boolean          | false   |
 
