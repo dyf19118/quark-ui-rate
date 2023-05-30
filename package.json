@@ -9,15 +9,20 @@
   ],
   "scripts": {
     "dev": "npm run start",
-    "start": "vite --open --force",
+    "start": "vite",
     "build": "rm -rf lib && vite build",
     "prepublishOnly": "pnpm run build"
   },
   "main": "./lib/index.mjs",
   "module": "./lib/index.mjs",
+  "types": "./lib/types/src/index.d.ts",
   "exports": {
-    "import": "./lib/index.mjs",
-    "require": "./lib/index.js"
+    ".": {
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.js",
+      "types": "./lib/types/src/index.d.ts"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "lib"
@@ -32,13 +37,11 @@
     "@types/lodash-es": "^4.17.7",
     "autoprefixer": "^10.4.14",
     "lodash-es": "^4.17.21",
-    "postcss-px-to-viewport": "^1.1.1",
     "quarkc": "^1.0.4",
     "rollup": "^3.2.3",
     "rollup-plugin-filesize": "^9.1.2",
     "tslib": "^2.5.2",
-    "vite": "^4.3.0",
-    "vite-plugin-full-reload": "^1.0.5"
+    "vite": "^4.3.0"
   },
   "peerDependencies": {
     "lodash-es": "4.x",
