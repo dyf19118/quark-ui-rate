@@ -16,9 +16,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
-    "lib": ["esnext", "dom"],
+    "lib": ["esnext", "dom"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "tests"],
   "exclude": ["node_modules/**"]
 }
-

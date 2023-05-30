@@ -5,7 +5,6 @@ import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { babel } from '@rollup/plugin-babel';
 import typescript from '@rollup/plugin-typescript';
-import postcss from '@quarkd/rollup-plugin-postcss';
 import filesize from 'rollup-plugin-filesize';
 
 const extensions = ['.js', '.ts', '.tsx']
@@ -14,27 +13,20 @@ const extensions = ['.js', '.ts', '.tsx']
 export default defineConfig({
   css: {
     postcss: {
-      plugins: [
-        autoprefixer({})
-      ],
+      plugins: [autoprefixer({})],
     },
   },
   build: {
     lib: {
-      entry: resolve('./src/index.ts'),
-      formats: ['es', 'cjs'],
-      fileName: 'index',
+      entry: resolve("./src/index.ts"),
+      formats: ["es", "cjs"],
+      fileName: "index",
     },
     rollupOptions: {
       output: {
-        dir: 'lib',
+        dir: "lib",
       },
-      // treeshake: false,
       plugins: [
-        postcss({
-          inject: false,
-          extensions: ['.css'],
-        }),
         typescript(),
         commonjs(),
         nodeResolve({
@@ -42,12 +34,12 @@ export default defineConfig({
           modulesOnly: true,
         }),
         babel({
-          babelHelpers: 'runtime',
-          exclude: 'node_modules/**',
+          babelHelpers: "runtime",
+          exclude: "node_modules/**",
           extensions,
         }),
-        filesize()
+        filesize(),
       ],
     },
-  }
+  },
 });

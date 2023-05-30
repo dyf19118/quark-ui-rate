@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "npm run start",
     "start": "vite",
-    "build": "rm -rf lib && vite build",
+    "build": "rimraf lib && vite build",
+    "preinstall": "npx only-allow pnpm",
     "prepublishOnly": "pnpm run build"
   },
   "main": "./lib/index.mjs",
@@ -28,8 +29,8 @@
     "lib"
   ],
   "devDependencies": {
+    "@babel/core": "^7.22.1",
     "@babel/plugin-transform-runtime": "^7.19.6",
-    "@quarkd/rollup-plugin-postcss": "^1.0.0",
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
@@ -37,9 +38,12 @@
     "@types/lodash-es": "^4.17.7",
     "autoprefixer": "^10.4.14",
     "lodash-es": "^4.17.21",
+    "postcss": "^8.4.24",
     "quarkc": "^1.0.4",
+    "rimraf": "^5.0.1",
     "rollup-plugin-filesize": "^9.1.2",
     "tslib": "^2.5.2",
+    "typescript": "^5.0.4",
     "vite": "^4.3.0"
   },
   "peerDependencies": {

@@ -1,5 +1,3 @@
 import QuarkUiRate from './main';
 
-export {
-  QuarkUiRate
-}
+export { QuarkUiRate };
