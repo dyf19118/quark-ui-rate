@@ -38,7 +38,6 @@
     "autoprefixer": "^10.4.14",
     "lodash-es": "^4.17.21",
     "quarkc": "^1.0.4",
-    "rollup": "^3.2.3",
     "rollup-plugin-filesize": "^9.1.2",
     "tslib": "^2.5.2",
     "vite": "^4.3.0"
