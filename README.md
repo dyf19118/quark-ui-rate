@@ -17,10 +17,30 @@ Since it's cross-framework, you can use it in popular javascript frameworks like
 First import it in your JS entry:
 ```js
 import 'quark-ui-rate'
+
+// since rate component is fully controlled
+// it only reacts to passed-down attribute changes
+// for vanilla js
+// register input callback to receive value changes
+// and set value attribute to update the component's internal representation
+document.addEventListener("DOMContentLoaded", () => {
+  const rate = document.getElementById("rate");
+  rate.addEventListener("input", (value) => {
+    if (value.detail < 3) {
+      console.log("at least 3 stars required");
+      return;
+    }
+    rate.setAttribute("value", value.detail);
+  });
+  rate.addEventListener("change", (value) => {
+    console.log("value changed", value.detail);
+  });
+});
 ```
 Then use it as a normal web component:
 ```html
 <quark-ui-rate
+  id="rate"
   size="1.5rem"
   value="4.7"
   space="0.5rem"
@@ -49,3 +69,8 @@ which shows a 4.7 stars rating out of 5 (top rating stars' count can be customiz
 | readonly    | is readonly                     | boolean          | false   |
 | disabled    | is disabled                     | boolean          | false   |
 
+## Events
+| Event  | Description                        | Parameters         |
+| ------ | ---------------------------------- | ------------------ |
+| input  | called when new rating value given | { detail: number } |
+| change | called when rating value changed   | { detail: number } |
