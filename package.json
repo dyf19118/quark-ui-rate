@@ -11,7 +11,6 @@
     "dev": "npm run start",
     "start": "vite",
     "build": "rimraf lib && vite build",
-    "preinstall": "npx only-allow pnpm",
     "prepublishOnly": "pnpm run build"
   },
   "main": "./lib/index.mjs",
