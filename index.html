@@ -9,7 +9,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hello Quark</title>
-    <script type="module" src="./src/main.tsx"></script>
+    <script type="module" src="./src/index.tsx"></script>
     <style>
       body {
         margin: 0;
@@ -34,14 +34,14 @@
       readonly="false"
       disabled="false"
     ></quark-ui-rate>
-    <p>Edit <code>src/app.tsx</code> and save to test HMR</p>
     <quark-ui-rate
       size="1.5rem"
       value="4.7"
       space="0.5rem"
       color="#ddd"
-      activeColor="linear-gradient(to right, #a8f, #8af)"
+      activeColor="linear-gradient(to right, #f8a, #fa8)"
     ></quark-ui-rate>
+    <p>Edit <code>src/app.tsx</code> and save to test HMR</p>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const rate = document.getElementById("rate");

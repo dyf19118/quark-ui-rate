@@ -8,12 +8,12 @@
     "rate"
   ],
   "scripts": {
-    "dev": "npm run start",
+    "dev": "pnpm run start",
     "start": "vite",
-    "build": "rimraf lib && vite build",
+    "build": "rimraf lib && vite build --config vite.config.build.ts",
     "prepublishOnly": "pnpm run build"
   },
-  "main": "./lib/index.mjs",
+  "main": "./lib/index.js",
   "module": "./lib/index.mjs",
   "types": "./lib/types/src/index.d.ts",
   "exports": {
@@ -39,7 +39,9 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^9.0.2",
     "@types/lodash-es": "^4.17.7",
+    "@types/node": "^20.2.5",
     "autoprefixer": "^10.4.14",
+    "less": "^4.1.3",
     "postcss": "^8.4.24",
     "rimraf": "^5.0.1",
     "rollup-plugin-filesize": "^9.1.2",
@@ -48,6 +50,6 @@
     "vite": "^4.3.0"
   },
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.18.0"
   }
 }

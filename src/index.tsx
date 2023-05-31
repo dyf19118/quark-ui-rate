@@ -1,9 +1,15 @@
 import { QuarkElement, property, customElement } from "quarkc";
 import { memoize } from "lodash-es";
-import style from "./main.css?inline";
+import style from "./index.less?inline";
 import defaultIconURL from "./images/star-mask.png";
 
 const cssValueRE = /^((?:\d+)?(?:\.\d*)?)([a-zA-Z%]+)?$/;
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "quark-ui-rate": QuarkUiRate;
+  }
+}
 
 @customElement({ tag: "quark-ui-rate", style })
 class QuarkUiRate extends QuarkElement {
@@ -182,9 +188,3 @@ class QuarkUiRate extends QuarkElement {
 }
 
 export default QuarkUiRate;
-
-declare global {
-  interface HTMLElementTagNameMap {
-    "quark-ui-rate": QuarkUiRate;
-  }
-}

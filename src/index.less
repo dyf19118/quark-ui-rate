@@ -1,0 +1,25 @@
+.star {
+  position: relative;
+  mask-position: center;
+  mask-size: 100% 100%;
+
+  &__progress {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+  }
+
+  &-list {
+    display: flex;
+    cursor: pointer;
+
+    &--readonly {
+      cursor: default;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+    }
+  }
+}
