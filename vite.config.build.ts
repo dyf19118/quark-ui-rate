@@ -17,7 +17,7 @@ export default defineConfig({
       fileName: "index",
     },
     rollupOptions: {
-      external: ['quarkc', 'lodash-es'],
+      external: ['quarkc'],
       output: {
         dir: "lib",
       },

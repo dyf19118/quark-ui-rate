@@ -1,5 +1,5 @@
 import { QuarkElement, property, customElement } from "quarkc";
-import { memoize } from "lodash-es";
+import { memoize } from "./utils";
 import style from "./index.less?inline";
 import defaultIconURL from "./images/star-mask.png";
 
@@ -172,12 +172,11 @@ class QuarkUiRate extends QuarkElement {
                   index * this.parsedSizeValue * -1,
                   this.parsedSizeUnit,
                 ]),
-                background: `${
-                  this.disabled ? "#c8c9cc" : this.activeColor
-                } left top / ${this.formatParsedValue([
-                  this.progressBgWidth,
-                  this.parsedSizeUnit,
-                ])} 100%`,
+                background: `${this.disabled ? "#c8c9cc" : this.activeColor
+                  } left top / ${this.formatParsedValue([
+                    this.progressBgWidth,
+                    this.parsedSizeUnit,
+                  ])} 100%`,
               }}
             />
           </div>
