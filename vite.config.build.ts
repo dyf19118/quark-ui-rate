@@ -13,13 +13,16 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve("./src/index.tsx"),
-      formats: ["es", "cjs"],
       fileName: "index",
+      name: "QuarkUiRate",
     },
     rollupOptions: {
       external: ['quarkc'],
       output: {
         dir: "lib",
+        globals: {
+          quarkc: "Quarkc",
+        },
       },
       plugins: [
         typescript()
