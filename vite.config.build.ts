@@ -13,7 +13,13 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve("./src/index.tsx"),
-      fileName: "index",
+      fileName: (format, entryName) => {
+        if (format === "es") {
+          return `${entryName}.js`;
+        }
+
+        return `${entryName}.${format}.js`;
+      },
       name: "QuarkUiRate",
     },
     rollupOptions: {
